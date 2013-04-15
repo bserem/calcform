@@ -1,0 +1,5 @@
+name = Custom Webform Calculator
+description = Calculator functions for webforms
+core = 7.x
+
+dependencies[] = webform

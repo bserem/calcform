@@ -1,0 +1,39 @@
+<?php
+
+/*
+ * @file
+ * Custom webform calculations and validation.
+ * Outputs messages to the end user using drupal_set_message.
+ */
+
+/*
+ * Implements hook_form_alter().
+ */
+function calcform_form_alter(&$form, $form_state, $form_id) {
+  if ($form_id == 'webform_client_form_1') {
+    $form['#validate'][] = 'area_calcform_validate';
+  }
+}
+
+/*
+ * Custom webform validation and calculations.
+ * Applies to webform 1.
+ */
+function area_calcform_validate($form, &$form_state) {
+  $width = $form_state['input']['submitted']['width'];
+  $height = $form_state['input']['submitted']['height'];
+
+  $area = $width * $height;
+  form_set_value($form['submitted']['area'], $area, $form_state);
+
+  dsm('Area is ' . $area); // DEVEL Code.
+
+  if ($area > 100) {
+    drupal_set_message(t('Area is ' . $area . '. Validation window is green.'), 'status');
+  }
+  else {
+    drupal_set_message(t('Area too small, validation window is red'), 'error');
+  }
+  
+  return $form;
+}
