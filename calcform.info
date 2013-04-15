@@ -1,5 +1,6 @@
-name = Custom Webform Calculator
-description = Calculator functions for webforms
+name = Calcform
+description = Custom calculator functions for webforms. This module expects you to write your custom calculations.
 core = 7.x
+version = 20130415-dev
 
 dependencies[] = webform
