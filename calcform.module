@@ -11,7 +11,7 @@
  */
 function calcform_form_alter(&$form, $form_state, $form_id) {
   dsm($form_id);
-  if ($form_id == 'webform_client_form_1') {
+  if ($form_id == 'webform_client_form_2') {
     $form['#validate'][] = 'area_calcform_validate';
   }
 }
