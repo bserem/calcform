@@ -11,7 +11,7 @@
  */
 function calcform_form_alter(&$form, $form_state, $form_id) {
   dsm($form_id);
-  if ($form_id == 'webform_client_form_2') {
+  if ($form_id == 'webform_client_form_3') {
     $form['#validate'][] = 'area_calcform_validate';
   }
 }
@@ -21,15 +21,14 @@ function calcform_form_alter(&$form, $form_state, $form_id) {
  * Applies to webform 1.
  */
 function area_calcform_validate($form, &$form_state) {
-  $width = $form_state['input']['submitted']['width'];
-  $height = $form_state['input']['submitted']['height'];
+  
+  $answer = $form_state['input']['submitted']['question1'];
 
-  $area = $width * $height;
-  form_set_value($form['submitted']['area'], $area, $form_state);
+  form_set_value($form['submitted']['answer'], $answer, $form_state);
 
-  dsm('Area is ' . $area); // DEVEL Code.
+  dsm('Answer is ' . $answer); // DEVEL Code.
 
-  if ($area > 100) {
+  if ($answer > 100) {
     drupal_set_message(t('Area is ' . $area . '. Validation window is green.'), 'status');
   }
   else {
