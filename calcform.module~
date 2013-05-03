@@ -55,7 +55,7 @@ function area_calcform_validate($form, &$form_state) {
         drupal_set_message(t('Answer is ' . $answer . '. Validation window is green.'), 'status');
       }
       else {
-        drupal_set_message(t('Answer not one, validation window is red'), 'error');
+        drupal_set_message(t('Answer too small, validation window is red'), 'error');
       }
       break;
   }
