@@ -23,10 +23,11 @@ function calcform_form_alter(&$form, $form_state, $form_id) {
 function area_calcform_validate($form, &$form_state) {
 
   $set_select = $form_state['input']['submitted']['set_select'];
+
+  dsm($set_select);
   
-  switch ($set_select) {
-    case 0:
-      echo "First question";
+
+  if (isset($set_select['0'])) {
       //logic
       $answer = $form_state['input']['submitted']['q1'];
       if ($answer > 100) {
@@ -35,9 +36,9 @@ function area_calcform_validate($form, &$form_state) {
       else {
         drupal_set_message(t('Answer too small, validation window is red'), 'error');
       }
-      break;
-    case 1:
-      echo "Second question";
+   }
+
+  if (isset($set_select['0'])) {
       //logic
       $answer = $form_state['input']['submitted']['q2'];
       if ($answer > 10) {
@@ -46,18 +47,17 @@ function area_calcform_validate($form, &$form_state) {
       else {
         drupal_set_message(t('Answer too small, validation window is red'), 'error');
       }
-      break;
-    case 2:
-      echo "Third question";
+   }
+
+  if (isset($set_select['0'])) {
       //logic
       $answer = $form_state['input']['submitted']['q3'];
       if ($answer == 1) {
         drupal_set_message(t('Answer is ' . $answer . '. Validation window is green.'), 'status');
       }
       else {
-        drupal_set_message(t('Answer too small, validation window is red'), 'error');
+        drupal_set_message(t('Answer not one, validation window is red'), 'error');
       }
-      break;
   }
 
 
